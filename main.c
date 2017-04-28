@@ -227,7 +227,8 @@ bool SBUS_decode(uint8_t data)
 		  {
 			  if (buffer[i] == 0x0F)
 			  {
-				  index = 25-i;                //TODO
+				  /* Das nächste Byte landet in... */
+              index = 25-i;
 			  }
 		  } 
 	  }
@@ -272,34 +273,3 @@ int8_t SBUS_getChannel(uint8_t nr)
    
    return result;   
 }
-
-#if 0
-int8_t SBUS_getChannel(uint8_t nr)
-{
-   int8_t value;
-   
-   /* Index-Korrektur und -Begrenzung */
-   if (--nr > 18)
-      return 0;
-   
-   /* Umrechnung vom Bereich 0..2047 -> -127..+127
-      - Eingangswerte sind 11 Bit unsigned, also 0 bis 2047,
-      - Ausgangswerte sind 8 Bit signed, also -128 bis +127, hier begrenzt auf +/-127, damit es symmetrisch wird.
-
-      1.) 11 Bit -> 8 Bit
-            ch = ch / 2048       <=> ch = ch >> 11
-            ch = ch * 256        <=> ch = ch << 8
-            ch = ch * 256 / 2048 <=> ch = ch >> 3
-      2.) Vorzeichen korrigieren: 0..255 -> -128..127
-            ch = ch - 128
-      3.) Symmetrisch machen
-            -128 -> -127
-    */
-   
-   value = (channel[nr] >> 3) - 128;
-   if (value == -128)
-      value = -127;
-   
-   return value;
-}
-#endif
