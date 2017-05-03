@@ -35,12 +35,9 @@
  *    in \ref USBD_HIDn_SetReport for rtype=HID_REPORT_FEATURE
  *
  */
-
-
 //! [code_USBD_User_HID]
 
 #include "rl_usb.h"
-
 
 /*
   This USB HID endpoint report description defines a device with:
@@ -65,34 +62,34 @@
 // User Provided HID Report Descriptor
 const uint8_t usbd_hid0_report_descriptor[] =
 {
-    0x05, 0x01,                    //     USAGE_PAGE (Generic Desktop)
-    0x09, 0x05,                    //     USAGE (Game Pad)
-    0xA1, 0x01,                    //     COLLECTION (Application)
-    0xA1, 0x00,                    //       COLLECTION (Physical)
-    0x05, 0x09,                    //         USAGE_PAGE (Button)
-    0x19, 0x01,                    //         USAGE_MINIMUM (Button 1)
-    0x29, 0x08,                    //         USAGE_MAXIMUM (Button 8)
-    0x15, 0x00,                    //         LOGICAL_MINIMUM (0)
-    0x25, 0x01,                    //         LOGICAL_MAXIMUM (1)
-    0x95, 0x08,                    //         REPORT_COUNT (8)
-    0x75, 0x01,                    //         REPORT_SIZE (1)
-    0x81, 0x02,                    //         INPUT (Data,Var,Abs)
-    0x05, 0x01,                    //         USAGE_PAGE (Generic Desktop)
-    0x09, 0x30,                    //         USAGE (X)
-    0x09, 0x31,                    //         USAGE (Y)
-    0x09, 0x32,                    //         USAGE (Z)
-    0x09, 0x33,                    //         USAGE (Rx)
-    0x09, 0x34,                    //         USAGE (Ry)
-    0x09, 0x35,                    //         USAGE (Rz)
-    0x09, 0x36,                    //         USAGE (Slider)
-    0x09, 0x36,                    //         USAGE (Slider)
-    0x15, 0x81,                    //         LOGICAL_MINIMUM (-127)
-    0x25, 0x7F,                    //         LOGICAL_MAXIMUM (127)
-    0x75, 0x08,                    //         REPORT_SIZE (8)
-    0x95, 0x08,                    //         REPORT_COUNT (8)
-    0x81, 0x02,                    //         INPUT (Data,Var,Abs)
-    0xC0,                          //       END_COLLECTION
-    0xC0                           //     END_COLLECTION
+   0x05, 0x01,                   //     USAGE_PAGE (Generic Desktop)
+   0x09, 0x05,                   //     USAGE (Game Pad)
+   0xA1, 0x01,                   //     COLLECTION (Application)
+   0xA1, 0x00,                   //       COLLECTION (Physical)
+   0x05, 0x09,                   //         USAGE_PAGE (Button)
+   0x19, 0x01,                   //         USAGE_MINIMUM (Button 1)
+   0x29, 0x08,                   //         USAGE_MAXIMUM (Button 8)
+   0x15, 0x00,                   //         LOGICAL_MINIMUM (0)
+   0x25, 0x01,                   //         LOGICAL_MAXIMUM (1)
+   0x95, 0x08,                   //         REPORT_COUNT (8)
+   0x75, 0x01,                   //         REPORT_SIZE (1)
+   0x81, 0x02,                   //         INPUT (Data,Var,Abs)
+   0x05, 0x01,                   //         USAGE_PAGE (Generic Desktop)
+   0x09, 0x30,                   //         USAGE (X)
+   0x09, 0x31,                   //         USAGE (Y)
+   0x09, 0x32,                   //         USAGE (Z)
+   0x09, 0x33,                   //         USAGE (Rx)
+   0x09, 0x34,                   //         USAGE (Ry)
+   0x09, 0x35,                   //         USAGE (Rz)
+   0x09, 0x36,                   //         USAGE (Slider)
+   0x09, 0x36,                   //         USAGE (Slider)
+   0x15, 0x81,                   //         LOGICAL_MINIMUM (-127)
+   0x25, 0x7F,                   //         LOGICAL_MAXIMUM (127)
+   0x75, 0x08,                   //         REPORT_SIZE (8)
+   0x95, 0x08,                   //         REPORT_COUNT (8)
+   0x81, 0x02,                   //         INPUT (Data,Var,Abs)
+   0xC0,                         //       END_COLLECTION
+   0xC0                          //     END_COLLECTION
 };
 
 // Called during USBD_Initialize to initialize the USB HID class instance.
@@ -101,13 +98,11 @@ void USBD_HID0_Initialize(void)
    // Add code for initialization
 }
 
-
 // Called during USBD_Uninitialize to de-initialize the USB HID class instance.
 void USBD_HID0_Uninitialize(void)
 {
    // Add code for de-initialization
 }
-
 
 // \brief Prepare HID Report data to send.
 // \param[in]   rtype   report type:
@@ -151,9 +146,8 @@ int32_t USBD_HID0_GetReport(uint8_t rtype, uint8_t req, uint8_t rid, uint8_t *bu
       case HID_REPORT_FEATURE:
          break;
    }
-   return (0);
+   return 0;
 }
-
 
 // \brief Process received HID Report data.
 // \param[in]   rtype   report type:
